@@ -6,4 +6,4 @@ WORKDIR /data
 #CMD ["/jablotron.run"] --v
 copy jablotron.go / 
 copy go.mod / 
-CMD ["go run ."] --v
+CMD ["go", "run","."] --v
