@@ -1,4 +1,4 @@
-ARG BUILD_FROM=golang:1.18
+ARG BUILD_FROM
 FROM $BUILD_FROM
 WORKDIR /usr/src/app
 COPY . .
