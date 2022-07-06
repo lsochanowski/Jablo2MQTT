@@ -1,0 +1,4 @@
+# https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
+name: Jablotron JA121T MQTT Integration
+url: 'https://github.com/lsochanowski/Jablotron-MQTT'
+maintainer: lukasz sochanowski <lukasz.sochanowski@gmail.com>

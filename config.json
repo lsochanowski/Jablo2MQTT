@@ -1,0 +1,23 @@
+{
+    "name": "Jablotron Ja121T Mqtt Bridge",
+    "version": "0.73",
+    "slug": "jablo_bridge",
+    "apparmor": "false",
+    "arch": ["amd64"],
+    "description": "integrate Jablotron Thru Ja-121T",
+    "startup": "application",
+    "boot": "auto",
+    "services" : ["mqtt:want"],
+    "ports": {},
+    "options": {
+     "JablotronPIN": "000000",
+     "JablotronIP": "127.0.0.1",
+     "JablotronPort": 502
+  },
+    "schema": {
+     "JablotronPIN": "int",
+     "JablotronIP": "str",
+     "JablotronPort": "port"
+  }
+  }
+  
