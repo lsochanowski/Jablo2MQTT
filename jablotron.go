@@ -133,6 +133,7 @@ var err error
 
 func main() {
 	cf, err := ShowOptionsFile()
+	fmt.Println(os.Getenv("SUPERVISOR_TOKEN"))
 	hacfg, err := GetMqttConfigFromHA(os.Getenv("SUPERVISOR_TOKEN"))
 	if err != nil {
 		fmt.Println("Cant Read Config From Supervisor")
@@ -201,7 +202,7 @@ type ConfigFile struct {
 
 func ShowOptionsFile() (ConfigFile, error) {
 	var cf ConfigFile
-	file, err := os.Open("options.json")
+	file, err := os.Open("/data/options.json")
 	if err != nil {
 		log.Println(err)
 		return cf, err
