@@ -1,6 +1,6 @@
 {
     "name": "Jablotron Ja121T Mqtt Bridge",
-    "version": "0.78",
+    "version": "0.79",
     "slug": "jablo_bridge",
     "image": "golang:1.18",
     "apparmor": "false",
