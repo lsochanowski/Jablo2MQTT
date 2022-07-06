@@ -1,5 +1,5 @@
 ARG BUILD_FROM=golang:1.18
-#FROM $BUILD_FROM
+FROM $BUILD_FROM
 WORKDIR /data
 #COPY jablotron.run /
 #RUN chmod a+x /jablotron.run
