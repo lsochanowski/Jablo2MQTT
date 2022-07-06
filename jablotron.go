@@ -133,7 +133,7 @@ var err error
 
 func main() {
 	cf, err := ShowOptionsFile()
-	fmt.Println(os.Getenv("SUPERVISOR_TOKEN"))
+	log.Println(os.Getenv("SUPERVISOR_TOKEN"))
 	hacfg, err := GetMqttConfigFromHA(os.Getenv("SUPERVISOR_TOKEN"))
 	if err != nil {
 		fmt.Println("Cant Read Config From Supervisor")
