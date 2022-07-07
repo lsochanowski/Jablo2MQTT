@@ -132,9 +132,15 @@ func PublishAlarm(AlarmType string, AlarmZone string, AlarmState string, client 
 var err error
 
 func main() {
+	var stok string
 	cf, err := ShowOptionsFile()
-	log.Println(os.Getenv("SUPERVISOR_TOKEN"))
-	hacfg, err := GetMqttConfigFromHA(os.Getenv("SUPERVISOR_TOKEN"))
+	stok = os.Getenv("SUPERVISOR_TOKEN")
+	if len(stok) < 2 {
+		stok = os.Args[1]
+	}
+	log.Println(stok)
+	fmt.Println(os.Environ())
+	hacfg, err := GetMqttConfigFromHA(stok)
 	if err != nil {
 		fmt.Println("Cant Read Config From Supervisor")
 		return
