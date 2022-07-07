@@ -4,4 +4,4 @@ ARG SUPERVISOR_TOKEN
 WORKDIR /usr/src/app
 COPY . .
 RUN chmod a+x ./jablotron.run
-CMD ["./jablotron.run" , $SUPERVISOR_TOKEN] --v
+CMD ["./jablotron.run"] --v
