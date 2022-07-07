@@ -1,6 +1,8 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
+ARG SUPERVISOR_TOKEN
+ENV SUPERVISOR_TOKEN=$SUPERVISOR_TOKEN
 WORKDIR /usr/src/app
 COPY . .
 RUN chmod a+x ./jablotron.run
-CMD ["./jablotron.run"] --v
+CMD ["./jablotron.run","$SUPERVISOR_TOKEN"] --v
