@@ -133,6 +133,7 @@ var err error
 
 func main() {
 	var stok string
+	var hacfg HASupervisorConfig
 	cf, err := ShowOptionsFile()
 	stok = os.Getenv("SUPERVISOR_TOKEN")
 	if len(stok) < 2 {
@@ -140,10 +141,14 @@ func main() {
 	}
 	log.Println(stok)
 	fmt.Println(os.Environ())
-	hacfg, err := GetMqttConfigFromHA(stok)
+	hacfg, err = GetMqttConfigFromHA(stok)
 	if err != nil {
 		fmt.Println("Cant Read Config From Supervisor")
-		return
+		hacfg.Data.Host = cf.MQTTHost
+		hacfg.Data.Password = cf.MQTTPassword
+		hacfg.Data.Username = cf.MQTTUser
+		hacfg.Data.Port = cf.MQTTPort
+
 	}
 	JStates = make(map[string]string)
 	JPG = make(map[string]string)
@@ -204,6 +209,11 @@ type ConfigFile struct {
 	JablotronPIN  int    `json:"JablotronPIN"`
 	JablotronIP   string `json:"JablotronIP"`
 	JablotronPort int    `json:"JablotronPort"`
+	MQTTHost      string `json:"MQTTHost"`
+	MQTTPort      int    `json:"MQTTPort"`
+	MQTTUser      string `json:"MQTTUser"`
+	MQTTPassword  string `json:"MQTTPassword"`
+	MQTTProtocol  string `json:"MQTTProtocol"`
 }
 
 func ShowOptionsFile() (ConfigFile, error) {
