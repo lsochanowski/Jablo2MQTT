@@ -136,12 +136,24 @@ func main() {
 	var hacfg HASupervisorConfig
 	cf, err := ShowOptionsFile()
 	stok = os.Getenv("SUPERVISOR_TOKEN")
+
 	if len(stok) < 2 {
-		stok = os.Args[1]
+		oa := os.Args
+		if len(oa) > 1 {
+			stok = os.Args[1]
+			hacfg, err = GetMqttConfigFromHA(stok)
+		} else {
+			hacfg.Data.Host = cf.MQTTHost
+			hacfg.Data.Password = cf.MQTTPassword
+			hacfg.Data.Username = cf.MQTTUser
+			hacfg.Data.Port = cf.MQTTPort
+		}
+	} else {
+		hacfg, err = GetMqttConfigFromHA(stok)
 	}
 	log.Println(stok)
 	fmt.Println(os.Environ())
-	hacfg, err = GetMqttConfigFromHA(stok)
+
 	if err != nil {
 		fmt.Println("Cant Read Config From Supervisor")
 		hacfg.Data.Host = cf.MQTTHost
