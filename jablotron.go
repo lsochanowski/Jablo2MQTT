@@ -19,7 +19,7 @@ import (
 
 var t1 time.Time
 var oktimer time.Time
-var JabloPIN = "485120"
+var JabloPIN string
 var JStates map[string]string
 var JPG map[string]string
 var JCommands map[time.Time]string
@@ -219,7 +219,7 @@ func HandleMSGfromMQTT(client mqtt.Client, msg mqtt.Message) {
 }
 
 type ConfigFile struct {
-	JablotronPIN  int    `json:"JablotronPIN"`
+	JablotronPIN  string    `json:"JablotronPIN"`
 	JablotronIP   string `json:"JablotronIP"`
 	JablotronPort int    `json:"JablotronPort"`
 	MQTTHost      string `json:"MQTTHost"`
