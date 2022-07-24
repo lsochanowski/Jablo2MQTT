@@ -162,6 +162,7 @@ func main() {
 		hacfg.Data.Port = cf.MQTTPort
 
 	}
+	JabloPIN = cf.JablotronPIN
 	JStates = make(map[string]string)
 	JPG = make(map[string]string)
 	JCommands = make(map[time.Time]string)
