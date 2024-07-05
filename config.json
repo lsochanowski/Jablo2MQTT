@@ -1,6 +1,6 @@
 {
     "name": "Jablotron Ja121T Mqtt Bridge",
-    "version": "0.997",
+    "version": "0.998",
     "slug": "jablo_bridge",
     "apparmor": "false",
     "arch": ["amd64"],
