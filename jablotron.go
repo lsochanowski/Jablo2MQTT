@@ -276,6 +276,7 @@ func MakeMQTTConn(hacfg HASupervisorConfig) (mqtt.Client, mqtt.Token) {
 		fmt.Println("Proto v4")
 		opts.SetProtocolVersion(4)
 	}
+		opts.SetProtocolVersion(4)
 	// connect to broker
 	client := mqtt.NewClient(opts)
 	//defer client.Disconnect(uint(2))
