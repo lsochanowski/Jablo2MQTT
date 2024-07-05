@@ -68,6 +68,7 @@ type HASupervisorConfig struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
 		Addon    string `json:"addon"`
+		ClientID string `json:"clientid"`
 	} `json:"data"`
 }
 
@@ -147,6 +148,7 @@ func main() {
 			hacfg.Data.Password = cf.MQTTPassword
 			hacfg.Data.Username = cf.MQTTUser
 			hacfg.Data.Port = cf.MQTTPort
+			hacfg.Data.ClientID = cf.MQTTClientID
 		}
 	} else {
 		hacfg, err = GetMqttConfigFromHA(stok)
@@ -160,6 +162,7 @@ func main() {
 		hacfg.Data.Password = cf.MQTTPassword
 		hacfg.Data.Username = cf.MQTTUser
 		hacfg.Data.Port = cf.MQTTPort
+		hacfg.Data.ClientID = cf.MQTTClientID
 
 	}
 	JabloPIN = cf.JablotronPIN
@@ -227,6 +230,7 @@ type ConfigFile struct {
 	MQTTUser      string `json:"MQTTUser"`
 	MQTTPassword  string `json:"MQTTPassword"`
 	MQTTProtocol  string `json:"MQTTProtocol"`
+	MQTTClientID  string `json:"MQTTClientID"`
 }
 
 func ShowOptionsFile() (ConfigFile, error) {
@@ -264,7 +268,7 @@ func MakeMQTTConn(hacfg HASupervisorConfig) (mqtt.Client, mqtt.Token) {
 	opts.SetPassword(hacfg.Data.Username)
 	opts.SetUsername(hacfg.Data.Password)
 	fmt.Println("Connstring", fmt.Sprintf("%s://%s:%d", "tcp", hacfg.Data.Host, hacfg.Data.Port), "usernamee", hacfg.Data.Username, "password", hacfg.Data.Password)
-	opts.SetClientID(hacfg.Data.Username)
+	opts.SetClientID(hacfg.Data.ClientID)
 	opts.SetKeepAlive(time.Second * time.Duration(60))
 	opts.SetOnConnectHandler(startsub)
 	opts.SetConnectionLostHandler(connLostHandler)
