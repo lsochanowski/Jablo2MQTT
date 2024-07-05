@@ -264,7 +264,7 @@ func MakeMQTTConn(hacfg HASupervisorConfig) (mqtt.Client, mqtt.Token) {
 	opts.SetPassword(hacfg.Data.Username)
 	opts.SetUsername(hacfg.Data.Password)
 	fmt.Println("Connstring", fmt.Sprintf("%s://%s:%d", "tcp", hacfg.Data.Host, hacfg.Data.Port), "usernamee", hacfg.Data.Username, "password", hacfg.Data.Password)
-	//opts.SetClientID(hacfg.Data.Username)
+	opts.SetClientID(hacfg.Data.Username)
 	opts.SetKeepAlive(time.Second * time.Duration(60))
 	opts.SetOnConnectHandler(startsub)
 	opts.SetConnectionLostHandler(connLostHandler)
